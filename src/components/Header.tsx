@@ -64,9 +64,11 @@ export const Header: React.FC<HeaderProps> = ({
           className="group flex items-center gap-2 font-mono text-base font-bold tracking-tight text-white transition-opacity hover:opacity-90"
           aria-label="Anupam Yadav Portfolio Home"
         >
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-lime-400/10 border border-lime-400/30 text-lime-400 text-xs">
-            AY
-          </span>
+          <img
+            src={`${import.meta.env.BASE_URL}logo.png`}
+            alt="Anupam Yadav"
+            className="h-8 w-8 rounded-lg object-contain border border-lime-400/30 bg-black/60 p-0.5 shadow-sm transition-transform duration-300 group-hover:scale-105"
+          />
           <span>
             ANUPAM<span className="text-lime-400">.</span>
           </span>

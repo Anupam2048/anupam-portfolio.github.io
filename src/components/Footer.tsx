@@ -12,10 +12,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
           {/* Brand & Mission */}
           <div>
-            <div className="flex items-center gap-2 font-mono text-sm font-bold text-white">
-              <span className="flex h-6 w-6 items-center justify-center rounded bg-lime-400/10 text-lime-400 text-xs border border-lime-400/30">
-                AY
-              </span>
+            <div className="flex items-center gap-2.5 font-mono text-sm font-bold text-white">
+              <img
+                src={`${import.meta.env.BASE_URL}logo.png`}
+                alt="Anupam Yadav"
+                className="h-7 w-7 rounded-lg object-contain border border-lime-400/30 bg-black/60 p-0.5"
+              />
               <span>
                 ANUPAM YADAV<span className="text-lime-400">.</span>
               </span>
