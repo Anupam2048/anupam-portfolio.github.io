@@ -29,6 +29,7 @@ export const ContactSection: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string>("");
   const [copiedType, setCopiedType] = useState<"email" | "phone" | null>(null);
 
   const emailAddress = "yanupam139@gmail.com";
@@ -70,15 +71,44 @@ export const ContactSection: React.FC = () => {
 
     setLoading(true);
 
-    // Simulate async network submission with guaranteed timeout
     try {
-      await new Promise((resolve) => setTimeout(resolve, 900));
+      const response = await fetch("https://formsubmit.co/ajax/yanupam139@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          role: formState.role || "Not specified",
+          message: formState.message,
+          _subject: `New Portfolio Inquiry from ${formState.name}`,
+          _template: "table",
+          _captcha: "false"
+        })
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok || data.success === "true" || (data.message && data.message.includes("Activation"))) {
+        setLoading(false);
+        setSuccess(true);
+        if (data.message && data.message.includes("Activation")) {
+          setSuccessMessage("Inquiry received! Check your inbox (yanupam139@gmail.com) for FormSubmit's one-time activation link to confirm reception.");
+        } else {
+          setSuccessMessage("Thank you for reaching out! Your message was delivered directly to yanupam139@gmail.com, and Anupam will review it shortly.");
+        }
+        setFormState({ name: "", email: "", role: "", message: "" });
+      } else {
+        throw new Error(data.message || "Failed to deliver message");
+      }
+    } catch (err: unknown) {
       setLoading(false);
-      setSuccess(true);
-      setFormState({ name: "", email: "", role: "", message: "" });
-    } catch {
-      setLoading(false);
-      setError("An unexpected error occurred. Please reach out directly via email.");
+      const errMsg = err instanceof Error ? err.message : "Submission failed";
+      setError(
+        `${errMsg}. If network restrictions apply, you can send directly using the mail link below.`
+      );
     }
   };
 
@@ -221,7 +251,7 @@ export const ContactSection: React.FC = () => {
                   </div>
                   <h3 className="mt-4 text-xl font-semibold text-white">Inquiry Received!</h3>
                   <p className="mt-2 text-xs text-zinc-300 leading-relaxed max-w-sm mx-auto">
-                    Thank you for reaching out. Your message has been noted, and Anupam will get in touch with you shortly.
+                    {successMessage || "Thank you for reaching out. Your message has been received and will be reviewed shortly."}
                   </p>
                   <button
                     onClick={() => setSuccess(false)}
@@ -322,6 +352,18 @@ export const ContactSection: React.FC = () => {
                       </>
                     )}
                   </button>
+
+                  <div className="pt-1 text-center">
+                    <a
+                      href={`mailto:${emailAddress}?subject=${encodeURIComponent(
+                        formState.name ? `Portfolio Inquiry from ${formState.name}` : "Portfolio Inquiry"
+                      )}&body=${encodeURIComponent(formState.message || "Hi Anupam,\n\n")}`}
+                      className="inline-flex items-center gap-1.5 text-[11px] font-mono text-zinc-500 hover:text-lime-300 transition-colors"
+                    >
+                      <Mail size={12} />
+                      <span>Or click here to send via your email client</span>
+                    </a>
+                  </div>
                 </form>
               )}
             </div>
