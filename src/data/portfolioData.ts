@@ -124,10 +124,10 @@ export const experienceData: ExperienceItem[] = [
 export const currentProjects: ProjectItem[] = [
   {
     no: "01",
-    title: "NWAY Attendance Reporting System",
+    title: "Attendance Reporting System",
     type: "Excel Enterprise Reporting",
     category: "excel",
-    file: `${import.meta.env.BASE_URL}workbooks/NWAY_ATTENDANCE_REPORT.xlsx`,
+    file: `${import.meta.env.BASE_URL}workbooks/ATTENDANCE_REPORT.xlsx`,
     stats: [
       { value: "3", label: "Workbook modules" },
       { value: "48", label: "Attendance columns" },
