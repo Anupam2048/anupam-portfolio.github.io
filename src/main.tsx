@@ -10,7 +10,6 @@ import { CurrentWork } from "./components/CurrentWork";
 import { ProjectModal } from "./components/ProjectModal";
 import { AnalyticsDemo } from "./components/AnalyticsDemo";
 import { FeaturedProject } from "./components/FeaturedProject";
-import { ContactSection } from "./components/ContactSection";
 import { Footer } from "./components/Footer";
 import { BackToTop } from "./components/BackToTop";
 import { ResumeModal } from "./components/ResumeModal";
@@ -23,7 +22,7 @@ export const App: React.FC = () => {
 
   // Active section scroll spy
   useEffect(() => {
-    const sectionIds = ["home", "about", "skills", "experience", "work", "calculator", "projects", "contact"];
+    const sectionIds = ["home", "about", "skills", "experience", "work", "calculator", "projects"];
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 200;
 
@@ -69,7 +68,6 @@ export const App: React.FC = () => {
         <CurrentWork onSelectProject={(p) => setSelectedProject(p)} />
         <AnalyticsDemo />
         <FeaturedProject />
-        <ContactSection />
       </main>
 
       {/* Footer */}
