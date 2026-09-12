@@ -14,7 +14,8 @@ const navLinks = [
   { id: "experience", label: "Experience" },
   { id: "work", label: "Current Work" },
   { id: "calculator", label: "Variance Demo" },
-  { id: "projects", label: "Case Study" }
+  { id: "projects", label: "Case Study" },
+  { id: "contact", label: "Contact" }
 ];
 
 export const Header: React.FC<HeaderProps> = ({

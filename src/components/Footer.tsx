@@ -50,9 +50,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <button onClick={() => onNavigate("projects")} className="hover:text-white transition-colors">
               Case Study
             </button>
-            <a href="mailto:yanupam139@gmail.com" className="hover:text-white transition-colors">
-              Email
-            </a>
+            <button onClick={() => onNavigate("contact")} className="hover:text-white transition-colors">
+              Contact
+            </button>
           </div>
         </div>
 

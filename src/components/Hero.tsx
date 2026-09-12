@@ -90,13 +90,13 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResume }) => {
             <span>Sample .xlsx</span>
           </a>
 
-          <a
-            href="mailto:yanupam139@gmail.com?subject=Opportunity%20for%20Anupam%20Yadav"
+          <button
+            onClick={() => onNavigate("contact")}
             className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3.5 text-sm text-zinc-400 transition-colors hover:border-white/20 hover:text-white"
           >
             <Mail size={15} />
-            <span>Email Directly</span>
-          </a>
+            <span>Get in Touch</span>
+          </button>
         </div>
 
         {/* Quick Highlights / Metrics Ribbon */}
