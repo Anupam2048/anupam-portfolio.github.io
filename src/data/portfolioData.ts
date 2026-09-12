@@ -127,7 +127,7 @@ export const currentProjects: ProjectItem[] = [
     title: "NWAY Attendance Reporting System",
     type: "Excel Enterprise Reporting",
     category: "excel",
-    file: "/workbooks/NWAY_ATTENDANCE_REPORT.xlsx",
+    file: `${import.meta.env.BASE_URL}workbooks/NWAY_ATTENDANCE_REPORT.xlsx`,
     stats: [
       { value: "3", label: "Workbook modules" },
       { value: "48", label: "Attendance columns" },
@@ -148,7 +148,7 @@ export const currentProjects: ProjectItem[] = [
     title: "Hotel Room Tracking Dashboard",
     type: "Excel + Executive Dashboards",
     category: "dashboards",
-    file: "/workbooks/HOTEL_ROOM_TRACKING_DASHBOARD.xlsx",
+    file: `${import.meta.env.BASE_URL}workbooks/HOTEL_ROOM_TRACKING_DASHBOARD.xlsx`,
     stats: [
       { value: "8", label: "Workbook sheets" },
       { value: "4", label: "Dashboard views" },

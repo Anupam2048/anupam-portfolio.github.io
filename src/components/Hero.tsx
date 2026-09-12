@@ -82,7 +82,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate, onOpenResume }) => {
           </button>
 
           <a
-            href="/workbooks/HOTEL_ROOM_TRACKING_DASHBOARD.xlsx"
+            href={`${import.meta.env.BASE_URL}workbooks/HOTEL_ROOM_TRACKING_DASHBOARD.xlsx`}
             download
             className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[.03] px-5 py-3.5 text-sm text-zinc-400 transition-colors hover:border-white/25 hover:text-white"
           >
